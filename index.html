@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#ffb26b" />
+<title> 桌面宠物 · 萌宠养成 v3.0</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- 领养页 -->
+  <section class="adopt" id="adoptScreen">
+    <div class="adopt-card">
+      <h1 class="adopt-title">领养一只小可爱</h1>
+      <p class="adopt-sub" id="adoptSub">选一只伙伴，它会陪着你成长，记得常来看看它呀～</p>
+
+      <div class="pet-picker" id="petPicker"></div>
+
+      <label class="field">
+        <span class="field-label">给它取个名字</span>
+        <input id="nameInput" class="name-input" type="text" maxlength="8" placeholder="例如：小喵" autocomplete="off" />
+      </label>
+
+      <button class="btn primary big" id="adoptBtn">✨ 确认领养</button>
+      <p class="adopt-tip" id="adoptTip">请先选择宠物并填写名字</p>
+    </div>
+  </section>
+
+  <!-- 主界面 -->
+  <section class="main" id="mainScreen" hidden>
+    <!-- 顶部状态栏 -->
+    <header class="topbar">
+      <div class="bars" id="statBars"></div>
+      <div class="top-right">
+        <div class="coin-box">
+          <span class="coin-icon">🪙</span>
+          <span class="coin-num" id="coinNum">0</span>
+        </div>
+        <button class="recharge-btn" id="rechargeBtn" aria-label="充值">💎</button>
+      </div>
+    </header>
+
+    <!-- 宠物展示区 -->
+    <div class="stage" id="stage">
+      <div class="bubble" id="bubble"></div>
+      <div class="pet-wrap" id="petWrap">
+        <div class="pet-bg" id="petBg"></div>
+        <div class="pet" id="pet">
+          <span class="pet-emoji" id="petEmoji">🐱</span>
+          <span class="acc acc-hat" id="accHat"></span>
+          <span class="acc acc-glasses" id="accGlasses"></span>
+          <span class="acc acc-scarf" id="accScarf"></span>
+          <span class="sick-badge" id="sickBadge" hidden>🤒</span>
+        </div>
+      </div>
+      <div class="pet-meta">
+        <span class="pet-name" id="petName">小喵</span>
+        <span class="pet-mood" id="petMood">😊 心情不错</span>
+        <span class="stage-badge" id="stageBadge">🌱 幼年 · 0 天</span>
+        <span class="pet-tip">点击宠物查看属性</span>
+      </div>
+    </div>
+
+    <!-- 操作按钮区 -->
+    <div class="actions" id="actions">
+      <button class="act" data-act="feed"><span class="a-emoji">🍖</span><span class="a-label">喂食</span><em class="a-cost">-5🪙</em></button>
+      <button class="act" data-act="clean"><span class="a-emoji">🛁</span><span class="a-label">清洁</span><em class="a-cost">-10🪙</em></button>
+      <button class="act" data-act="play"><span class="a-emoji">🎾</span><span class="a-label">玩耍</span><em class="a-cost">-10🪙</em></button>
+      <button class="act" data-act="rest"><span class="a-emoji">💤</span><span class="a-label">休息</span><em class="a-cost">免费</em></button>
+      <div class="act info"><span class="a-emoji">📴</span><span class="a-label">状态</span><em id="stateText">正常</em></div>
+      <div class="act info"><span class="a-emoji">⏰</span><span class="a-label">结算</span><em id="incomeText">等待中</em></div>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="tabbar">
+      <button class="tab" data-tab="shop"><span class="t-emoji">🏪</span><span>商店</span></button>
+      <button class="tab" data-tab="sign"><span class="t-emoji">📅</span><span>签到</span></button>
+      <button class="tab" data-tab="ad"><span class="t-emoji">📺</span><span id="adTabText">广告</span></button>
+      <button class="tab" data-tab="achieve"><span class="t-emoji">🏆</span><span>成就</span></button>
+      <button class="tab" data-tab="attr"><span class="t-emoji">📊</span><span>属性</span></button>
+      <button class="tab" data-tab="setting"><span class="t-emoji">⚙️</span><span>设置</span></button>
+    </nav>
+  </section>
+</div>
+
+<!-- 统一弹窗 -->
+<div class="mask" id="mask" hidden>
+  <div class="modal" id="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle">标题</h2>
+      <button class="close" id="modalClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- 轻提示 -->
+<div class="toast" id="toast"></div>
+
+<script src="petConfig.js"></script>
+<script src="itemConfig.js"></script>
+<script src="event.js"></script>
+<script src="growth.js"></script>
+<script src="achievement.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
